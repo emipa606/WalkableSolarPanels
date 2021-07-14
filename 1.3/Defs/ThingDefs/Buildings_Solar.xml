@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>WalkableSolarPanel</defName>
+    <label>walkable solar panel</label>
+    <description>Produces electricity from sunlight. This module is fitted into a paved tile making it walkable.</description>
+    <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <uiIconPath>SolarPanelRoad_Icon</uiIconPath>
+    <graphicData>
+      <linkType>Basic</linkType>
+      <texPath>SolarPanelRoad_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+        <edgeTop>Damage/Edge</edgeTop>
+        <edgeBot>Damage/Edge</edgeBot>
+        <edgeLeft>Damage/Edge</edgeLeft>
+        <edgeRight>Damage/Edge</edgeRight>
+      </damageData>
+      <linkFlags>
+        <li>Custom7</li>
+      </linkFlags>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>SolarPanelRoad_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <size>(1,1)</size>
+    <costList>
+      <Gold>10</Gold>
+      <Steel>2</Steel>
+    </costList>
+    <costStuffCount>10</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <placingDraggableDimensions>2</placingDraggableDimensions>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>WalkableSolarPanels.WalkableSolarPanelsComp</compClass>
+        <basePowerConsumption>-1</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>SolarPanels</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <saveCompressible>false</saveCompressible>
+  </ThingDef>
+</Defs>
