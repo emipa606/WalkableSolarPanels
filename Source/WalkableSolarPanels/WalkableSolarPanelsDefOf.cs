@@ -1,16 +1,15 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace WalkableSolarPanels
-{
-    [DefOf]
-    public static class WalkableSolarPanelsDefOf
-    {
-        public static ThingDef WalkableSolarPanel;
+namespace WalkableSolarPanels;
 
-        static WalkableSolarPanelsDefOf()
-        {
-            DefOfHelper.EnsureInitializedInCtor(typeof(WalkableSolarPanelsDefOf));
-        }
+[DefOf]
+public static class WalkableSolarPanelsDefOf
+{
+    public static ThingDef WalkableSolarPanel;
+
+    static WalkableSolarPanelsDefOf()
+    {
+        DefOfHelper.EnsureInitializedInCtor(typeof(WalkableSolarPanelsDefOf));
     }
 }
