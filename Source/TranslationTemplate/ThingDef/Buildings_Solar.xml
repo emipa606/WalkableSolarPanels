@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: walkable solar panel -->
+  <WalkableSolarPanel.label>walkable solar panel</WalkableSolarPanel.label>
+  <!-- EN: Produces electricity from sunlight. This module is fitted into a paved tile making it walkable. -->
+  <WalkableSolarPanel.description>Produces electricity from sunlight. This module is fitted into a paved tile making it walkable.</WalkableSolarPanel.description>
+</LanguageData>

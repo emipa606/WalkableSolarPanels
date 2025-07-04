@@ -2,5 +2,17 @@
   "Continued": false,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5"
+  "PreviewVersion": "1.6",
+  "LastXmlCleaning": "2025-07-04T23:58:51.8998095+02:00",
+  "SocialImageSet": true,
+  "FundingSet": true,
+  "Patches": false,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 5875.0,
+  "LinesOfXML": 2502.0,
+  "SearchTags": [
+    " sustainable",
+    " energy"
+  ]
 }

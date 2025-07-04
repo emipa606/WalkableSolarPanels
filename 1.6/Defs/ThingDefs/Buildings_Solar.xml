@@ -5,6 +5,7 @@
     <label>walkable solar panel</label>
     <description>Produces electricity from sunlight. This module is fitted into a paved tile making it walkable.</description>
     <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
     <uiIconPath>SolarPanelRoad_Icon</uiIconPath>
     <graphicData>
       <linkType>Basic</linkType>
@@ -51,7 +52,7 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <placingDraggableDimensions>2</placingDraggableDimensions>
+    <drawStyleCategory>Floors</drawStyleCategory>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>WalkableSolarPanels.WalkableSolarPanelsComp</compClass>

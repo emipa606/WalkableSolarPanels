@@ -9,9 +9,9 @@ public class WalkableSolarPanelsComp : CompPowerPlant
 {
     private const float MaxCapacity = 100f;
 
-    private int CachedTotalOutput;
+    private int cachedTotalOutput;
 
-    private int LastUpdateTick;
+    private int lastUpdateTick;
 
     private IntVec3 parentPosition;
 
@@ -71,22 +71,19 @@ public class WalkableSolarPanelsComp : CompPowerPlant
             powerColor = Color.green;
         }
 
-        DrawCircle(parent.DrawPos, new Vector2(0.08f, 0.08f),
+        drawCircle(parent.DrawPos, new Vector2(0.08f, 0.08f),
             SolidColorMaterials.SimpleSolidColorMaterial(powerColor));
     }
 
     public override string CompInspectStringExtra()
     {
         var returnString = base.CompInspectStringExtra();
-        if (LastUpdateTick != 0 && GenTicks.TicksGame < LastUpdateTick + 400)
+        if (lastUpdateTick != 0 && GenTicks.TicksGame < lastUpdateTick + 400)
         {
-            return $"{returnString}\n{"WSP.totalpower".Translate(CachedTotalOutput)}";
+            return $"{returnString}\n{"WSP.totalpower".Translate(cachedTotalOutput)}";
         }
 
-        if (solarPanelDef == null)
-        {
-            solarPanelDef = DefDatabase<ThingDef>.GetNamedSilentFail("WalkableSolarPanel");
-        }
+        solarPanelDef ??= DefDatabase<ThingDef>.GetNamedSilentFail("WalkableSolarPanel");
 
         var allPanels = parent.Map.listerBuildings.AllBuildingsColonistOfDef(solarPanelDef);
         var returnValue = 0f;
@@ -95,9 +92,9 @@ public class WalkableSolarPanelsComp : CompPowerPlant
             returnValue += building.GetComp<WalkableSolarPanelsComp>().DesiredPowerOutput;
         }
 
-        CachedTotalOutput = (int)Math.Round(returnValue);
-        LastUpdateTick = GenTicks.TicksGame;
-        return $"{returnString}\n{"WSP.totalpower".Translate(CachedTotalOutput)}";
+        cachedTotalOutput = (int)Math.Round(returnValue);
+        lastUpdateTick = GenTicks.TicksGame;
+        return $"{returnString}\n{"WSP.totalpower".Translate(cachedTotalOutput)}";
     }
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -119,20 +116,20 @@ public class WalkableSolarPanelsComp : CompPowerPlant
     }
 
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
         if (parentPosition.GetTerrain(map) == TerrainDefOf.PavedTile)
         {
             map.terrainGrid.RemoveTopLayer(parentPosition, false);
         }
 
-        base.PostDeSpawn(map);
+        base.PostDeSpawn(map, mode);
     }
 
-    private static void DrawCircle(Vector3 center, Vector2 size, Material colorMaterial)
+    private static void drawCircle(Vector3 center, Vector2 size, Material colorMaterial)
     {
         var matrix = default(Matrix4x4);
-        var lineWidth = 0.02f;
+        const float lineWidth = 0.02f;
         var frameHorizontalSize = new Vector3(size.x / 2, 1f, size.y);
         var frameVerticalSize = new Vector3(size.x, 1f, size.y / 2);
         var framePosition = center + (Vector3.up * 0.01f);
